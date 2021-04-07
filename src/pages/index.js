@@ -3,7 +3,6 @@ import { Link, graphql } from 'gatsby'
 import Masonry from 'react-masonry-component'
 import Img from 'gatsby-image'
 import Layout from "../components/layout"
-
 const IndexPage = ({ data }) => (
   <Layout>
     <Masonry className="showcase">
@@ -27,9 +26,7 @@ const IndexPage = ({ data }) => (
     </Masonry>
   </Layout>
 )
-
 export default IndexPage
-
 export const query = graphql`
   query IndexQuery {
     allDatoCmsWork(sort: { fields: [position], order: ASC }) {
