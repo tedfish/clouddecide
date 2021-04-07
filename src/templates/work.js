@@ -4,8 +4,7 @@ import { HelmetDatoCms } from 'gatsby-source-datocms'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
 import Layout from "../components/layout"
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 export default ({ data }) => (
   <Layout>
     <article className="sheet">
@@ -14,7 +13,7 @@ export default ({ data }) => (
         <h1 className="sheet__title">{data.datoCmsWork.title}</h1>
         <p className="sheet__lead">{data.datoCmsWork.excerpt}</p>
         <div className="sheet__slider">
-          <Slider autoplay adaptiveHeight={true} speed={500} infinite={true} slidesToShow={1} arrows={true} fade={true} dots>
+          <Slider infinite={true} slidesToShow={2} arrows>
             {data.datoCmsWork.gallery.map(({ fluid }) => (
               <img alt={data.datoCmsWork.title} key={fluid.src} src={fluid.src} />
             ))}
@@ -33,6 +32,7 @@ export default ({ data }) => (
     </article>
   </Layout>
 )
+
 export const query = graphql`
   query WorkQuery($slug: String!) {
     datoCmsWork(slug: { eq: $slug }) {
