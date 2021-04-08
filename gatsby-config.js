@@ -1,5 +1,4 @@
 require('dotenv').config()
-
 module.exports = {
   siteMetadata: {
     title: `Creative Portfolio`,
@@ -13,6 +12,12 @@ module.exports = {
       options: {
         apiToken: process.env.DATO_API_TOKEN,
       },
+    },
+    {
+      resolve: `gatsby-plugin-breadcrumb`,
+      options: {
+        useAutoGen: true,
+     },
     },
   ],
 }
