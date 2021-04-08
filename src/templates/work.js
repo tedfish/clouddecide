@@ -6,13 +6,11 @@ import { graphql } from 'gatsby'
 import Layout from "../components/layout"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-const Named = ({ data }) => (
-// export default ({ data }) => (
+export default ({ data }) => (
   <Layout>
     <article className="sheet">
       <HelmetDatoCms seo={data.datoCmsWork.seoMetaTags} />
       <div className="sheet__inner">
-        <a class="back" href="/">Back to portfolio</a>
         <h1 className="sheet__title">{data.datoCmsWork.title}</h1>
         <p className="sheet__lead">{data.datoCmsWork.excerpt}</p>
         <div className="sheet__slider">
@@ -28,14 +26,13 @@ const Named = ({ data }) => (
             __html: data.datoCmsWork.descriptionNode.childMarkdownRemark.html,
           }}
         />
-      </div>
-      <div className="sheet__gallery">
+        <div className="sheet__gallery">
           <Img fluid={data.datoCmsWork.coverImage.fluid} />
         </div>
+      </div>
     </article>
   </Layout>
 )
-export default Named;
 export const query = graphql`
   query WorkQuery($slug: String!) {
     datoCmsWork(slug: { eq: $slug }) {
